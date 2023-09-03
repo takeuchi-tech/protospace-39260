@@ -1,0 +1,6 @@
+<% @comments.each do |comment| %>
+  <div class="comment">
+    <%= comment.text %>
+    <%= link_to comment.user.name, user_path(comment.user), class: :comment_user %>
+  </div>
+<% end %>
