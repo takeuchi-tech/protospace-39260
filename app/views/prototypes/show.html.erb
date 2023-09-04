@@ -44,13 +44,11 @@
           <% end %>
         <% end %>
         <%# // ログインしているユーザーには上記を表示する %>
+        <%# 投稿に紐づくコメントを一覧する処理を記述する %>
         <ul class="comments_lists">
-          <%# 投稿に紐づくコメントを一覧する処理を記述する %>
-            <li class="comments_list">
-              <%= render partial: 'comments', collection: @comments%>
-            </li>
-          <%# // 投稿に紐づくコメントを一覧する処理を記述する %>
+          <%= render  'comments/comment', collection: @comments%>
         </ul>
+        <%# // 投稿に紐づくコメントを一覧する処理を記述する %>
       </div>
     </div>
   </div>

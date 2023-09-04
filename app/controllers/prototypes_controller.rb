@@ -1,14 +1,14 @@
 class PrototypesController < ApplicationController
   before_action :authenticate_user!, only: [:create, :edit, :destroy], except:[:index, :new, :show]
   before_action :move_to_index, except: [:index, :show]
-  
+
   def index
     @prototypes = Prototype.all
   end
 
   def new
     @prototype = Prototype.new
-  end
+  end 
 
   def create
     @prototype = Prototype.create(prototype_params)
@@ -46,13 +46,13 @@ class PrototypesController < ApplicationController
     redirect_to root_path
   end
 
+  private
+
   def move_to_index
-    unless current_user.id == params[:user_id].to_i
+    if current_user.id == params[:user_id].to_i
       redirect_to action: :index
     end
   end
-
-  private
 
   def prototype_params
     params.require(:prototype).permit(:title, :catch_copy, :concept, :image)
